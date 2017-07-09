@@ -24,9 +24,9 @@ SFApp::SFApp(std::shared_ptr<SFWindow> window) : fire(0), is_running(true), sf_w
   coins.push_back(coin);
 
   auto wall = make_shared<SFAsset>(SFASSET_WALL, sf_window);
-  auto pos  = Point2((canvas_w/4), 100);
-  wall->SetPosition(pos);
-  coins.push_back(wall);
+  auto poswall  = Point2((canvas_w/2), canvas_h/2);
+  wall->SetPosition(poswall);
+  walls.push_back(wall);
 
 SFApp::~SFApp() {
 }
@@ -134,6 +134,10 @@ void SFApp::OnRender() {
 
   for(auto c: coins) {
     c->OnRender();
+  }
+
+  for(auto w: walls) {
+    w->OnRender();
   }
 
   // Switch the off-screen buffer to be on-screen
