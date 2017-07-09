@@ -23,8 +23,8 @@ SFApp::SFApp(std::shared_ptr<SFWindow> window) : fire(0), is_running(true), sf_w
   coin->SetPosition(pos);
   coins.push_back(coin);
 
-  auto wall = make_shared<SFAsset>(SFASSET_COIN, sf_window);
-  auto pos  = Point2((canvas_w/4), 50);
+  auto wall = make_shared<SFAsset>(SFASSET_WALL, sf_window);
+  auto pos  = Point2((canvas_w/4), 100);
   wall->SetPosition(pos);
   coins.push_back(wall);
 
@@ -99,6 +99,13 @@ void SFApp::OnUpdateWorld() {
       }
     }
   }
+
+  //I think in order to do wall collion the code would look like this
+  //for(auto w : walls) {
+  //for(auto s : ships {
+  //if s->CollidesWith(w)) {
+  //w->HandleCollision();
+  //s->HandleCollision();
 
   // remove dead aliens (the long way)
   list<shared_ptr<SFAsset>> tmp;
